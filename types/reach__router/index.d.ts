@@ -69,7 +69,11 @@ export interface LinkGetProps {
     location: WindowLocation;
 }
 
-export class Link<TState> extends React.Component<LinkProps<TState>> {}
+export function Link<TState>(...params: Parameters<Link<TState>>): ReturnType<Link<TState>>;
+export interface Link<TState>
+    extends React.ForwardRefExoticComponent<
+        React.PropsWithoutRef<LinkProps<TState>> & React.RefAttributes<HTMLAnchorElement>
+    > {}
 
 export interface RedirectProps<TState> {
     from?: string;

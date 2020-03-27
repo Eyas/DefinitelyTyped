@@ -58,4 +58,11 @@ const handleRef = (el: HTMLAnchorElement) => {
     el.focus();
 };
 
+// Link.props.innerRef can be used as expected:
 render(<Link innerRef={handleRef} to="./foo"></Link>, document.getElementById('app-root'));
+
+// Link.props.ref can be used as expected:
+render(<Link ref={handleRef} to="./foo"></Link>, document.getElementById('app-root'));
+
+// Link can be used as a generic.
+render(<Link<number> state={5} to="./foo"></Link>, document.getElementById('app-root'));
