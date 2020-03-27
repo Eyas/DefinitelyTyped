@@ -7,7 +7,7 @@
 //                 O.Jackman <https://github.com/chilledoj>
 //                 Eyas <https://github.com/Eyas>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version: 2.8
+// TypeScript Version: 2.9
 
 import * as React from 'react';
 import { Location as HLocation } from 'history';
@@ -69,7 +69,10 @@ export interface LinkGetProps {
     location: WindowLocation;
 }
 
-export function Link<TState>(...params: Parameters<Link<TState>>): ReturnType<Link<TState>>;
+export function Link<TState>(
+    // TODO: Define this as ...params: Parameters<Link<TState>> when only TypeScript >= 3.1 support is needed.
+    props: React.PropsWithoutRef<LinkProps<TState>> & React.RefAttributes<HTMLAnchorElement>,
+): ReturnType<Link<TState>>;
 export interface Link<TState>
     extends React.ForwardRefExoticComponent<
         React.PropsWithoutRef<LinkProps<TState>> & React.RefAttributes<HTMLAnchorElement>
